@@ -1,0 +1,12 @@
+node_modules/
+cache/
+build/
+typechain/
+artifacts/
+coverage*
+.env
+.openzeppelin
+package-lock.json
+*.js
+scripts/mint.ts
+assets/*.mp4
