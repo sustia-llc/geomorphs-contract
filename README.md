@@ -75,7 +75,7 @@ After Arweave deployment, update value for "image" in geomorphs-1.json. Deploy g
 npx arweave deploy data/geomorphs-1.json
 ```
 
-Update mintTokenURI in scripts/mint-rinkeby.ts, scripts/mint-mainnet.ts, and scripts/mint-mumbai.ts with Arweave path to token metadata file
+Update mintTokenURI in scripts/mint-rinkeby.ts and scripts/mint-mainnet.ts with Arweave path to token metadata file
 
 ## Deploy to Rinkeby
 Get ether on Rinkeby:
