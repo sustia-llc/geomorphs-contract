@@ -53,8 +53,6 @@ describe("geomorphs", () => {
                 .to.be.revertedWith('Ownable: caller is not the owner');
         });
     });
-
-    //TODO: add burn test coverage
 });
 
 
