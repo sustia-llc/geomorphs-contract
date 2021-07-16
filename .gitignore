@@ -10,3 +10,4 @@ package-lock.json
 *.js
 scripts/mint.ts
 assets/*.mp4
+assets/geomorphs-2.gif

@@ -31,7 +31,7 @@ async function main() {
   const mintTokenURI = 'https://arweave.net/-DkL_O5TDgA-edjW2oakcpjk_387IQ1ruqd7dzrhs_Q';
 
   const receipt: ContractTransaction = await contract.connect(deployer)
-    .mintTo(mintToAddress, mintTokenURI, { gasLimit: 3000000 });
+    .mintTo(mintToAddress, mintTokenURI, { gasLimit: 300000 });
 
   // receipt should include tokenURI with tokenID
   // here is where you would supply metadata to the above address

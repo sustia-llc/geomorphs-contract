@@ -28,10 +28,11 @@ async function main() {
 
   const contract: GeoMorphs = new ethers.Contract(contractAddress, abi, deployer) as GeoMorphs;
 
-  const mintTokenURI = 'https://arweave.net/p94DFXUKhuN9wOHTXBxjxLTl6_66nCvQo3Yde8I7uxc';
+  // current token URI for geomorphs-2.json
+  const mintTokenURI = 'https://arweave.net/Sd-IEPgkuTSU3tFnxfyiSj6P2gjEPzNLATq_Haibh_0';
 
   const receipt: ContractTransaction = await contract.connect(deployer)
-    .mintTo(mintToAddress, mintTokenURI, { gasLimit: 3000000 });
+    .mintTo(mintToAddress, mintTokenURI, { gasLimit: 300000 }); // 30,000 units
 
   // receipt should include tokenURI with tokenID
   // here is where you would supply metadata to the above address
