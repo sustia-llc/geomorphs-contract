@@ -57,7 +57,7 @@ npx arweave key-save <json file>
 npx arweave deploy assets/geomorphs.jpg
 ```
 
-After Arweave deployment, update value for "image" in geomorphs-contract.json. Deploy geomorphs-contract.json:
+After Arweave deployment, update value for "image" with the resulting Arweave URL in geomorphs-contract.json. Deploy geomorphs-contract.json:
 ```sh
 npx arweave deploy data/geomorphs-contract.json
 ```
@@ -65,12 +65,20 @@ npx arweave deploy data/geomorphs-contract.json
 Update "contractURI" in contracts/GeoMorphs.sol
 
 ## Set up Metadata and Images for First Minted Work
-Arweave image or video should be less than 10MB. In this case a 1024x1024 mp4 with vcodec H.264, pixel format YUV 4:2:0, and CRF 25:
+Upload image as a 480x480 animated gif:
+```sh
+ffmpeg -i geomorphs-1.mp4 -vf scale=480:-1 geomorphs-1.gif
+npx arweave deploy assets/geomorphs-1.gif
+```
+
+After Arweave deployment, update "image" with the resulting Arweave URL in geomorphs-1.json.
+
+Upload animation_url as a 1024x1024 mp4 with vcodec H.264, pixel format YUV 4:2:0, and CRF 25. Arweave image or video should be less than 10MB:
 ```sh
 npx arweave deploy assets/geomorphs-1.mp4
 ```
 
-After Arweave deployment, update value for "image" in geomorphs-1.json. Deploy geomorphs-1.json:
+After Arweave deployment, update "animation_url" with the resulting Arweave URL in geomorphs-1.json. Deploy geomorphs-1.json:
 ```sh
 npx arweave deploy data/geomorphs-1.json
 ```
@@ -133,20 +141,20 @@ hh run --network mainnet scripts/mint-mainnet.ts
 ### Mint third piece to Mainnet
 Upload larger 2048x2048 mp4 to web server at https://hollygrimm.com/geomorphs/3
 
-Upload image, a 480x480 animated gif:
+Upload image as a 480x480 animated gif:
 ```sh
 ffmpeg -i geomorphs-3.mp4 -vf scale=480:-1 geomorphs-3.gif
 npx arweave deploy assets/geomorphs-3.gif
 ```
 
-After Arweave deployment, update value for "image" in geomorphs-3.json.
+After Arweave deployment, update "image" with the resulting Arweave URL in geomorphs-3.json.
 
-Upload animation_url, a 1024x1024 mp4 with vcodec H.264, pixel format YUV 4:2:0, and CRF 25. Arweave image or video should be less than 10MB:
+Upload animation_url as a 1024x1024 mp4 with vcodec H.264, pixel format YUV 4:2:0, and CRF 25. Arweave image or video should be less than 10MB:
 ```sh
 npx arweave deploy assets/geomorphs-3.mp4
 ```
 
-After Arweave deployment, update value for "animation_url" in geomorphs-3.json. Deploy geomorphs-3.json:
+After Arweave deployment, update "animation_url" with the resulting Arweave URL in geomorphs-3.json. Deploy geomorphs-3.json:
 ```sh
 npx arweave deploy assets/geomorphs-3.json
 ```
