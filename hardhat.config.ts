@@ -8,13 +8,9 @@ import "@nomiclabs/hardhat-etherscan";
 import "hardhat-typechain";
 import "solidity-coverage";
 
-task("accounts", "Prints the list of accounts", async (args, hre) => {
-    const accounts = await hre.ethers.getSigners();
-
-    for (const account of accounts) {
-        console.log(account.address);
-    }
-});
+import "./tasks/accounts";
+import "./tasks/deployment/deploy";
+import "./tasks/operations/mint-token";
 
 const INFURA_API_KEY = process.env.INFURA_API_KEY || "";
 const MAINNET_PRIVATE_KEY =
@@ -36,7 +32,7 @@ const config: HardhatUserConfig = {
         mainnet: {
             url: `https://mainnet.infura.io/v3/${INFURA_API_KEY}`,
             accounts: [MAINNET_PRIVATE_KEY],
-            gasPrice: 50000000000, // 50 gwei,
+            gasPrice: 21000000000, // 21 gwei,
         },
         rinkeby: {
             url: `https://rinkeby.infura.io/v3/${INFURA_API_KEY}`,

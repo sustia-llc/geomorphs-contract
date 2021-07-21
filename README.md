@@ -39,7 +39,7 @@ hh compile
 hh test
 hh coverage
 ```
-## Local deployment
+## Local deployment and mint
 ```sh
 hh node
 ```
@@ -47,7 +47,13 @@ In a new terminal, go to the repository's root folder and run this to
 deploy your contract:
 
 ```sh
-hh run --network localhost scripts/deploy-localhost.ts
+hh deploy --network localhost
+```
+
+update LOCALHOST_CONTRACT_ADDRESS .env with address of newly deployed contract. 
+
+```sh
+hh mint-token --network localhost --metadata-uri ar://8_NZWr4K9d6N8k4TDbMzLAkW6cNQnSQMLeoShc8komM
 ```
 
 ## Set up Metadata and Image for Contract
@@ -59,7 +65,7 @@ npx arweave deploy assets/geomorphs.jpg
 
 After Arweave deployment, update value for "image" with the resulting Arweave URL in geomorphs-contract.json. Deploy geomorphs-contract.json:
 ```sh
-npx arweave deploy data/geomorphs-contract.json
+npx arweave deploy assets/geomorphs-contract.json
 ```
 
 Update "contractURI" in contracts/GeoMorphs.sol
@@ -71,19 +77,19 @@ ffmpeg -i geomorphs-1.mp4 -vf scale=480:-1 geomorphs-1.gif
 npx arweave deploy assets/geomorphs-1.gif
 ```
 
-After Arweave deployment, update "image" with the resulting Arweave URL in geomorphs-1.json.
+After Arweave deployment, update "image" with the resulting Arweave URL (ar://<hash>) in geomorphs-1.json.
 
 Upload animation_url as a 1024x1024 mp4 with vcodec H.264, pixel format YUV 4:2:0, and CRF 25. Arweave image or video should be less than 10MB:
 ```sh
 npx arweave deploy assets/geomorphs-1.mp4
 ```
 
-After Arweave deployment, update "animation_url" with the resulting Arweave URL in geomorphs-1.json. Deploy geomorphs-1.json:
+After Arweave deployment, update "animation_url" with the resulting Arweave URL (ar://<hash>) in geomorphs-1.json. Deploy geomorphs-1.json:
 ```sh
-npx arweave deploy data/geomorphs-1.json
+npx arweave deploy assets/geomorphs-1.json
 ```
 
-Update mintTokenURI in scripts/mint-rinkeby.ts and scripts/mint-mainnet.ts with Arweave path to token metadata file
+Note new Arweave path (ar://<hash>) to token metadata file for minting
 
 ## Deploy to Rinkeby
 Get ether on Rinkeby:
@@ -94,7 +100,7 @@ Supply the private key of the contract owner in .env:
 
 Deploy contract to Rinkeby:
 ```sh
-hh run --network rinkeby scripts/deploy-rinkeby.ts
+hh deploy --network rinkeby
 ```
 Note the deployed contract's address and update value in .env:
 * RINKEBY_CONTRACT_ADDRESS=
@@ -110,7 +116,7 @@ https://rinkeby.etherscan.io/address/_contract-address_
 
 ### Mint to Rinkeby
 ```sh
-hh run --network rinkeby scripts/mint-rinkeby.ts
+hh mint-token --network rinkeby --metadata-uri ar://8_NZWr4K9d6N8k4TDbMzLAkW6cNQnSQMLeoShc8komM
 ```
 
 ### Check contract on OpenSea
@@ -118,7 +124,7 @@ Go to https://testnets.opensea.io/ connect wallet using the Rinkeby network. Cho
 
 ## Deploy to mainnet
 ```sh
-hh run --network mainnet scripts/deploy-mainnet.ts
+hh deploy --network mainnet
 ```
 
 note the depoloyed contract's address and update value in .env:
@@ -135,36 +141,7 @@ https://etherscan.io/address/_contract-address__#code
 
 ### Mint to mainnet
 ```sh
-hh run --network mainnet scripts/mint-mainnet.ts
-```
-
-### Mint third piece to Mainnet
-Upload larger 2048x2048 mp4 to web server at https://hollygrimm.com/geomorphs/3
-
-Upload image as a 480x480 animated gif:
-```sh
-ffmpeg -i geomorphs-3.mp4 -vf scale=480:-1 geomorphs-3.gif
-npx arweave deploy assets/geomorphs-3.gif
-```
-
-After Arweave deployment, update "image" with the resulting Arweave URL in geomorphs-3.json.
-
-Upload animation_url as a 1024x1024 mp4 with vcodec H.264, pixel format YUV 4:2:0, and CRF 25. Arweave image or video should be less than 10MB:
-```sh
-npx arweave deploy assets/geomorphs-3.mp4
-```
-
-After Arweave deployment, update "animation_url" with the resulting Arweave URL in geomorphs-3.json. Deploy geomorphs-3.json:
-```sh
-npx arweave deploy assets/geomorphs-3.json
-```
-
-Update mintTokenURI in scripts/mint-rinkeby.ts and scripts/mint-mainnet.ts with Arweave path to token metadata file
-```sh
-hh run --network mainnet scripts/mint-rinkeby.ts
-```
-```sh
-hh run --network mainnet scripts/mint-mainnet.ts
+hh mint-token --network mainnet --metadata-uri ar://8_NZWr4K9d6N8k4TDbMzLAkW6cNQnSQMLeoShc8komM
 ```
 
 ### Check contract on OpenSea
