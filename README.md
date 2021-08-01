@@ -35,6 +35,7 @@ enter the following values into .env:
 Clean, compile and test:
 ```sh
 hh clean
+TS_NODE_TRANSPILE_ONLY=1 hh compile
 hh compile
 hh test
 hh coverage
