@@ -59,14 +59,14 @@ hh mint-token --network localhost --metadata-uri ar://8_NZWr4K9d6N8k4TDbMzLAkW6c
 
 ## Set up Metadata and Image for Contract
 ```sh
-npx arweave key-save <json file>
+arkb wallet-save <json file>
 
-npx arweave deploy assets/geomorphs.jpg
+arkb deploy assets/geomorphs.jpg
 ```
 
 After Arweave deployment, update value for "image" with the resulting Arweave URL in geomorphs-contract.json. Deploy geomorphs-contract.json:
 ```sh
-npx arweave deploy assets/geomorphs-contract.json
+arkb deploy assets/geomorphs-contract.json
 ```
 
 Update "contractURI" in contracts/GeoMorphs.sol
@@ -75,19 +75,19 @@ Update "contractURI" in contracts/GeoMorphs.sol
 Upload image as a 480x480 animated gif:
 ```sh
 ffmpeg -i geomorphs-1.mp4 -vf scale=480:-1 geomorphs-1.gif
-npx arweave deploy assets/geomorphs-1.gif
+arkb deploy assets/geomorphs-1.gif
 ```
 
 After Arweave deployment, update "image" with the resulting Arweave URL (ar://<hash>) in geomorphs-1.json.
 
 Upload animation_url as a 1024x1024 mp4 with vcodec H.264, pixel format YUV 4:2:0, and CRF 25. Arweave image or video should be less than 10MB:
 ```sh
-npx arweave deploy assets/geomorphs-1.mp4
+arkb deploy assets/geomorphs-1.mp4
 ```
 
 After Arweave deployment, update "animation_url" with the resulting Arweave URL (ar://<hash>) in geomorphs-1.json. Deploy geomorphs-1.json:
 ```sh
-npx arweave deploy assets/geomorphs-1.json
+arkb deploy assets/geomorphs-1.json
 ```
 
 Note new Arweave path (ar://<hash>) to token metadata file for minting
@@ -117,7 +117,7 @@ https://rinkeby.etherscan.io/address/_contract-address_
 
 ### Mint to Rinkeby
 ```sh
-hh mint-token --network rinkeby --metadata-uri ar://8_NZWr4K9d6N8k4TDbMzLAkW6cNQnSQMLeoShc8komM
+hh mint-token --network rinkeby --metadata-uri ar://JHlikZmbJfG7CoRbSk3DnqGZnPD8BSLz7W9RwoS0OV8
 ```
 
 ### Check contract on OpenSea
@@ -142,7 +142,7 @@ https://etherscan.io/address/_contract-address__#code
 
 ### Mint to mainnet
 ```sh
-hh mint-token --network mainnet --metadata-uri ar://8_NZWr4K9d6N8k4TDbMzLAkW6cNQnSQMLeoShc8komM
+hh mint-token --network mainnet --metadata-uri ar://JHlikZmbJfG7CoRbSk3DnqGZnPD8BSLz7W9RwoS0OV8
 ```
 
 ### Check contract on OpenSea
